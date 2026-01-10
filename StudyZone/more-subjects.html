@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>More Subjects - StudyZone</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+
+<!-- ================= HEADER ================= -->
+<header class="bg-white/80 backdrop-blur-sm border-b sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+    <div class="flex items-center gap-3">
+      <a href="index.html" class="flex items-center gap-3 hover:opacity-80 transition">
+        <i data-lucide="book-open" class="w-8 h-8 text-blue-600"></i>
+        <h1 class="text-2xl font-bold">StudyZone</h1>
+      </a>
+    </div>
+
+    <nav class="hidden md:flex gap-8">
+      <a href="research.html" class="font-medium text-gray-700 hover:text-blue-600">Research</a>
+      <a href="about.html" class="font-medium text-gray-700 hover:text-blue-600">About</a>
+      <a href="contact.html" class="font-medium text-gray-700 hover:text-blue-600">Contact Us</a>
+    </nav>
+
+    <a href="index.html" class="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition md:hidden">
+      <i data-lucide="arrow-left" class="w-5 h-5"></i>
+      <span>Back</span>
+    </a>
+  </div>
+</header>
+
+<!-- ================= PAGE CONTENT ================= -->
+<main class="max-w-6xl mx-auto px-4 py-12">
+  <!-- Return to Homepage Button -->
+  <div class="mb-6">
+    <a href="index.html" class="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+      <i data-lucide="home" class="w-5 h-5"></i>
+      <span>Return to Homepage</span>
+    </a>
+  </div>
+
+  <!-- Page Header -->
+  <div class="text-center mb-12">
+    <div class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full mb-6">
+      <i data-lucide="book-open" class="w-10 h-10 text-white"></i>
+    </div>
+    <h1 class="text-4xl md:text-5xl font-bold mb-4 text-gray-800">More Subjects</h1>
+    <p class="text-xl text-gray-600">
+      Explore additional subjects available on StudyZone
+    </p>
+  </div>
+
+  <!-- Math Category -->
+  <section class="mb-16">
+    <h2 class="text-3xl font-bold text-center mb-12">Math</h2>
+    <div id="mathGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 items-stretch"></div>
+  </section>
+
+  <!-- English Category -->
+  <section class="mb-16">
+    <h2 class="text-3xl font-bold text-center mb-12">English</h2>
+    <div id="englishGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 items-stretch"></div>
+  </section>
+
+  <!-- More Coming Soon -->
+  <section class="mb-16">
+    <h2 class="text-3xl font-bold text-center mb-12">More Coming Soon</h2>
+  </section>
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="bg-gray-900 text-white py-10 text-center mt-16">
+  <p class="text-gray-400">© 2026 StudyZone. All rights reserved.</p>
+</footer>
+
+<script>
+  lucide.createIcons();
+</script>
+
+<script>
+  // Math subjects data
+  const mathSubjects = [
+    {
+      name: "Algebra",
+      icon: "function-square",
+      color: "from-red-500 to-pink-500",
+      description: "Study of mathematical symbols and rules",
+      page: "algebra.html",
+      analysisPage: "algebra-analysis.html"
+    },
+    {
+      name: "Geometry",
+      icon: "shapes",
+      color: "from-blue-500 to-indigo-500",
+      description: "Study of shapes, sizes, and properties of space",
+      page: "geometry.html",
+      analysisPage: "geometry-analysis.html"
+    },
+    {
+      name: "Probability and Statistics",
+      icon: "bar-chart-3",
+      color: "from-green-500 to-teal-500",
+      description: "Study of data analysis and chance",
+      page: "probability-statistics.html",
+      analysisPage: "probability-statistics-analysis.html"
+    },
+    {
+      name: "Arithmetic Math",
+      icon: "calculator",
+      color: "from-purple-500 to-violet-500",
+      description: "Study of basic number operations",
+      page: "arithmetic-math.html"
+    },
+    {
+      name: "Basic Math",
+      icon: "hash",
+      color: "from-orange-500 to-amber-500",
+      description: "Fundamental mathematical concepts and operations",
+      page: "basic-math.html"
+    }
+  ];
+
+  // Render math subjects
+  const mathGrid = document.getElementById("mathGrid");
+  if (mathGrid) {
+    mathGrid.innerHTML = "";
+    
+    mathSubjects.forEach((subject, index) => {
+      mathGrid.innerHTML += `
+        <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition overflow-hidden flex flex-col h-full">
+          <div class="h-32 bg-gradient-to-r ${subject.color} flex items-center justify-center relative overflow-hidden flex-shrink-0">
+            <i data-lucide="${subject.icon}" class="w-8 h-8 text-white"></i>
+          </div>
+          <div class="p-6 flex flex-col flex-grow">
+            <h3 class="text-xl font-bold mb-2">${subject.name}</h3>
+            <p class="text-gray-600 mb-4 flex-grow">${subject.description}</p>
+            <div class="flex flex-col gap-2 mt-auto">
+              <button class="math-basic-btn w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition" data-math-index="${index}">
+                Basic Overview
+              </button>
+              <button class="math-depth-btn w-full bg-gray-600 text-white py-2 rounded-lg hover:bg-gray-700 transition" data-math-index="${index}">
+                In-Depth
+              </button>
+            </div>
+          </div>
+        </div>
+      `;
+    });
+    
+    // Add event listeners to math buttons
+    document.querySelectorAll('.math-basic-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const mathIndex = parseInt(e.target.getAttribute('data-math-index'));
+        window.location.href = mathSubjects[mathIndex].page;
+      });
+    });
+    
+    // Add event listeners to in-depth buttons
+    document.querySelectorAll('.math-depth-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const mathIndex = parseInt(e.target.getAttribute('data-math-index'));
+        if (mathSubjects[mathIndex].analysisPage) {
+          window.location.href = mathSubjects[mathIndex].analysisPage;
+        }
+      });
+    });
+    
+    lucide.createIcons();
+  }
+
+  // English subjects data
+  const englishSubjects = [
+    {
+      name: "APA Essays",
+      icon: "file-text",
+      color: "from-blue-500 to-cyan-500",
+      description: "American Psychological Association essay format",
+      page: "apa-essays.html"
+    },
+    {
+      name: "MLA Essays",
+      icon: "file-text",
+      color: "from-indigo-500 to-purple-500",
+      description: "Modern Language Association essay format",
+      page: "mla-essays.html"
+    },
+    {
+      name: "Rhetorical Appeals",
+      icon: "message-square",
+      color: "from-pink-500 to-rose-500",
+      description: "Ethos, pathos, and logos in argumentation",
+      page: "rhetorical-appeals.html"
+    },
+    {
+      name: "Argumentative Essays",
+      icon: "scale",
+      color: "from-orange-500 to-red-500",
+      description: "Essays that present and defend arguments",
+      page: "argumentative-essays.html"
+    }
+  ];
+
+  // Render English subjects
+  const englishGrid = document.getElementById("englishGrid");
+  if (englishGrid) {
+    englishGrid.innerHTML = "";
+    
+    englishSubjects.forEach((subject, index) => {
+      englishGrid.innerHTML += `
+        <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition overflow-hidden flex flex-col h-full">
+          <div class="h-32 bg-gradient-to-r ${subject.color} flex items-center justify-center relative overflow-hidden flex-shrink-0">
+            <i data-lucide="${subject.icon}" class="w-8 h-8 text-white"></i>
+          </div>
+          <div class="p-6 flex flex-col flex-grow">
+            <h3 class="text-xl font-bold mb-2">${subject.name}</h3>
+            <p class="text-gray-600 mb-4 flex-grow">${subject.description}</p>
+            <div class="flex flex-col gap-2 mt-auto">
+              <button class="english-basic-btn w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition" data-english-index="${index}">
+                Basic Overview
+              </button>
+              <button class="english-depth-btn w-full bg-gray-600 text-white py-2 rounded-lg hover:bg-gray-700 transition" data-english-index="${index}">
+                In-Depth
+              </button>
+            </div>
+          </div>
+        </div>
+      `;
+    });
+    
+    // Add event listeners to English buttons
+    document.querySelectorAll('.english-basic-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const englishIndex = parseInt(e.target.getAttribute('data-english-index'));
+        window.location.href = englishSubjects[englishIndex].page;
+      });
+    });
+    
+    // Add event listeners to in-depth buttons
+    document.querySelectorAll('.english-depth-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const englishIndex = parseInt(e.target.getAttribute('data-english-index'));
+        if (englishSubjects[englishIndex].analysisPage) {
+          window.location.href = englishSubjects[englishIndex].analysisPage;
+        }
+      });
+    });
+    
+    lucide.createIcons();
+  }
+</script>
+
+</body>
+</html>
